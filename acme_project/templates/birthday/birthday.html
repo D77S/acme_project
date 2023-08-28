@@ -5,4 +5,14 @@
       {{ form.as_p }}
     <input type="submit" value="Submit">
   </form>
+  {% with data=request.GET %}
+    {% if form.is_valid %}
+      <h2>Привет, {{ data.first_name }} {{ data.last_name }}</h2>
+      {% if birthday_countdown == 0 %}
+        С днем рождения!
+      {% else %}
+        Осталось до дня рождения: {{ birthday_countdown}}!
+      {% endif %}
+    {% endif %}
+  {% endwith %}
 {% endblock %}
