@@ -2,9 +2,13 @@
 
 {% block content %}
   {% for birthday in birthdays %}
-    <div> <!-- Обернём каждую запись в тег div -->
-      <div> <!-- Текст обернём в отдельный вложенный div -->
+    <div>
+      <div>
         {{ birthday.first_name }} {{ birthday.last_name }} - {{ birthday.birthday }}
+      </div>
+      <div>
+        <a href="{% url 'birthday:edit' birthday.id %}">Изменить запись</a>
+        <a href="{% url 'birthday:delete_birthday' birthday.id %}">Удалить запись</a>
       </div>
       {% if not forloop.last %}
         <hr>
