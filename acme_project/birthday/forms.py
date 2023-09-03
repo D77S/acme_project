@@ -24,10 +24,10 @@ class BirthdayForm(forms.ModelForm):
         return first_name.split()[0]
 
     def clean(self):
-        # Получаем имя и фамилию из очищенных полей формы.
+        # Вызов родительского метода clean.
+        super().clean()
         first_name = self.cleaned_data['first_name']
         last_name = self.cleaned_data['last_name']
-        # Проверяем вхождение сочетания имени и фамилии во множество имён.
         if f'{first_name} {last_name}' in BEATLES:
             raise ValidationError(
                 'Мы тоже любим Битлз, но введите, пожалуйста, настоящее имя!'
