@@ -28,7 +28,7 @@ def birthday(request, pk=None):
     # Остальной код без изменений.
     context = {'form': form}
     # Сохраняем данные, полученные из формы, и отправляем ответ:
-    print('\nform.is_valid такой: ', form.is_valid)
+    print('\nform.is_valid такой: ', form.is_valid())
     if not (request.POST) and (not (form.is_valid())):
         print('\nФорма с GET-запросом. Вроде не содержит ничего невалидного, но почему-то признана невалидной.')
     if form.is_valid():

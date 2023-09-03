@@ -1,3 +1,4 @@
+# superuser login/pass admin1/admin1
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
