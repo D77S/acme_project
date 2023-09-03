@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% for birthday in birthdays %}
+  {% for birthday in page_obj %}
     <!-- Добавим класс row: каждая запись — это строка -->
     <div class="row">
       <!-- Первая "колонка" в строке, её ширина — 2/12 -->
