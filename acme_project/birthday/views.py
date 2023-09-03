@@ -23,7 +23,11 @@ def birthday(request, pk=None):
     print('\nrequest такой:', request)
     print('\nrequest.POST такой: ', request.POST)
     print('\nrequest.POST or None такой: ', (request.POST or None))
-    form = BirthdayForm(request.POST or None, instance=instance)
+    form = BirthdayForm(
+        request.POST or None,
+        # Файлы, переданные в запросе, указываются отдельно.
+        files=request.FILES or None,
+        instance=instance)
     print('\nВ form попало такое: ', form)
     # Остальной код без изменений.
     context = {'form': form}
