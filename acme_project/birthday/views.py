@@ -78,7 +78,7 @@ def birthday(request, pk=None):
         birthday_countdown = calculate_birthday_countdown(
             form.cleaned_data['birthday']
         )
-        context.update({'birthday_countdown': birthday_countdown})
+        context.update({'birthday_countdown': birthday_countdown}) # type: ignore
     else:
         print('\nНе сохраняем форму в базу.')
     print('\nДошли до рендера. Context такой: ', context)
