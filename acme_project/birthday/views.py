@@ -9,16 +9,6 @@ from .models import Birthday
 from .utils import calculate_birthday_countdown
 
 
-class BirthdayMixin:
-    model = Birthday
-    success_url = reverse_lazy('birthday:list')
-
-
-class BirthdayFormMixin:
-    form_class = BirthdayForm
-    template_name = 'birthday/birthday.html'
-
-
 class BirthdayListView(ListView):
     # Указываем модель, с которой работает CBV...
     model = Birthday
@@ -28,16 +18,19 @@ class BirthdayListView(ListView):
     paginate_by = 10
 
 
-class BirthdayCreateView(BirthdayMixin, BirthdayFormMixin, CreateView):
-    pass
+class BirthdayCreateView(CreateView):
+    model = Birthday
+    form_class = BirthdayForm
 
 
-class BirthdayUpdateView(BirthdayMixin, BirthdayFormMixin, UpdateView):
-    pass
+class BirthdayUpdateView(UpdateView):
+    model = Birthday
+    form_class = BirthdayForm
 
 
-class BirthdayDeleteView(BirthdayMixin, DeleteView):
-    pass
+class BirthdayDeleteView(DeleteView):
+    model = Birthday
+    success_url = reverse_lazy('birthday:list')
 
 
 class BirthdayDetailView(DetailView):
