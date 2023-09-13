@@ -16,6 +16,12 @@ from .utils import calculate_birthday_countdown
 class BirthdayListView(ListView, LoginRequiredMixin):
     # Указываем модель, с которой работает CBV...
     model = Birthday
+    # По умолчанию этот класс
+    # выполняет запрос queryset = Birthday.objects.all(),
+    # но мы его переопределим:
+    queryset = Birthday.objects.prefetch_related(
+        'tags'
+    ).select_related('author')
     # ...сортировку, которая будет применена при выводе списка объектов:
     ordering = 'id'
     # ...и даже настройки пагинации:
